@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Update Course {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 mb-3">
+        <h4 class="text-center"> Welcome {{ user.username }} </h4>
+        <h2 class="mb-4">Update Course</h2>
+
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_name" class="form-label">Course Name</label>
+                <input type="text" name="name" id="id_name" class="form-control" value="{{ form.instance.name }}" required>
+                <div class="invalid-feedback">
+                    Please provide a valid course name.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="id_description" class="form-label">Description</label>
+                <textarea name="description" id="id_description" class="form-control" required>{{ form.instance.description }}</textarea>
+                <div class="invalid-feedback">
+                    Please provide a valid description.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Update Course</button>
+                <a href="{% url 'update_view_list' %}" class="btn btn-secondary" style='color:white;'>Go Back</a>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Course List {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 mb-3">
+        <h4 class="text-center"> Welcome {{ user.username }} </h4>
+        <h2>Course List</h2>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course.name }} - {{ course.description }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+
+        <!-- Back button -->
+        <a onclick="goBack()" class="btn btn-secondary" style='color:white;'>Go Back</a>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}
